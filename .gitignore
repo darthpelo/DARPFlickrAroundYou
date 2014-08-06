@@ -6,3 +6,13 @@
 #
 # Pods/
 
+
+*.xcuserstate
+
+DARPFlickrAroundYou/DARPFlickrAroundYou.xcodeproj/xcuserdata/darth.xcuserdatad/xcschemes/xcschememanagement.plist
+
+DARPFlickrAroundYou/DARPFlickrAroundYou.xcodeproj/xcuserdata/darth.xcuserdatad/xcschemes/DARPFlickrAroundYou.xcscheme
+
+DARPFlickrAroundYou/DARPFlickrAroundYou.xcodeproj/project.xcworkspace/xcuserdata/darth.xcuserdatad/UserInterfaceState.xcuserstate
+
+DARPFlickrAroundYou/DARPFlickrAroundYou.xcodeproj/project.xcworkspace/xcshareddata/DARPFlickrAroundYou.xccheckout

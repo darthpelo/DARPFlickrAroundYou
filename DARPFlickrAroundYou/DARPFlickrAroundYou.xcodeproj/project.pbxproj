@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		45025F0810DC41AA9DD82FA5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00770F47B67B4914B3593803 /* libPods.a */; };
+		BE8D29FF1992D0CD00113644 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D29FE1992D0CD00113644 /* Foundation.framework */; };
+		BE8D2A011992D0CD00113644 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A001992D0CD00113644 /* CoreGraphics.framework */; };
+		BE8D2A031992D0CD00113644 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A021992D0CD00113644 /* UIKit.framework */; };
+		BE8D2A091992D0CD00113644 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE8D2A071992D0CD00113644 /* InfoPlist.strings */; };
+		BE8D2A0B1992D0CD00113644 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D2A0A1992D0CD00113644 /* main.m */; };
+		BE8D2A0F1992D0CD00113644 /* DARPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D2A0E1992D0CD00113644 /* DARPAppDelegate.m */; };
+		BE8D2A121992D0CD00113644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE8D2A101992D0CD00113644 /* Main.storyboard */; };
+		BE8D2A171992D0CD00113644 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8D2A161992D0CD00113644 /* Images.xcassets */; };
+		BE8D2A1E1992D0CE00113644 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A1D1992D0CE00113644 /* XCTest.framework */; };
+		BE8D2A1F1992D0CE00113644 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D29FE1992D0CD00113644 /* Foundation.framework */; };
+		BE8D2A201992D0CE00113644 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A021992D0CD00113644 /* UIKit.framework */; };
+		BE8D2A281992D0CE00113644 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE8D2A261992D0CE00113644 /* InfoPlist.strings */; };
+		BE8D2A2A1992D0CE00113644 /* DARPFlickrAroundYouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D2A291992D0CE00113644 /* DARPFlickrAroundYouTests.m */; };
+		BE8D2A3C1992D50400113644 /* DARPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D2A371992D50400113644 /* DARPViewController.m */; };
+		BE8D2A3D1992D50400113644 /* VEFlickrConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D2A3B1992D50400113644 /* VEFlickrConnection.m */; };
+		BE8D2A411992D59F00113644 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A401992D59F00113644 /* MapKit.framework */; };
+		BE8D2A431992D5AC00113644 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A421992D5AC00113644 /* CoreLocation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BE8D2A211992D0CE00113644 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE8D29F31992D0CD00113644 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE8D29FA1992D0CD00113644;
+			remoteInfo = DARPFlickrAroundYou;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00770F47B67B4914B3593803 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9059713593684E94813763A2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		BE8D29FB1992D0CD00113644 /* DARPFlickrAroundYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DARPFlickrAroundYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE8D29FE1992D0CD00113644 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BE8D2A001992D0CD00113644 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BE8D2A021992D0CD00113644 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BE8D2A061992D0CD00113644 /* DARPFlickrAroundYou-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DARPFlickrAroundYou-Info.plist"; sourceTree = "<group>"; };
+		BE8D2A081992D0CD00113644 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BE8D2A0A1992D0CD00113644 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BE8D2A0C1992D0CD00113644 /* DARPFlickrAroundYou-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DARPFlickrAroundYou-Prefix.pch"; sourceTree = "<group>"; };
+		BE8D2A0D1992D0CD00113644 /* DARPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DARPAppDelegate.h; sourceTree = "<group>"; };
+		BE8D2A0E1992D0CD00113644 /* DARPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DARPAppDelegate.m; sourceTree = "<group>"; };
+		BE8D2A111992D0CD00113644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BE8D2A161992D0CD00113644 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BE8D2A1C1992D0CE00113644 /* DARPFlickrAroundYouTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DARPFlickrAroundYouTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE8D2A1D1992D0CE00113644 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BE8D2A251992D0CE00113644 /* DARPFlickrAroundYouTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DARPFlickrAroundYouTests-Info.plist"; sourceTree = "<group>"; };
+		BE8D2A271992D0CE00113644 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BE8D2A291992D0CE00113644 /* DARPFlickrAroundYouTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DARPFlickrAroundYouTests.m; sourceTree = "<group>"; };
+		BE8D2A361992D50400113644 /* DARPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARPViewController.h; sourceTree = "<group>"; };
+		BE8D2A371992D50400113644 /* DARPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARPViewController.m; sourceTree = "<group>"; };
+		BE8D2A3A1992D50400113644 /* VEFlickrConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFlickrConnection.h; sourceTree = "<group>"; };
+		BE8D2A3B1992D50400113644 /* VEFlickrConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFlickrConnection.m; sourceTree = "<group>"; };
+		BE8D2A401992D59F00113644 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BE8D2A421992D5AC00113644 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE8D29F81992D0CD00113644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8D2A411992D59F00113644 /* MapKit.framework in Frameworks */,
+				BE8D2A431992D5AC00113644 /* CoreLocation.framework in Frameworks */,
+				BE8D2A011992D0CD00113644 /* CoreGraphics.framework in Frameworks */,
+				BE8D2A031992D0CD00113644 /* UIKit.framework in Frameworks */,
+				BE8D29FF1992D0CD00113644 /* Foundation.framework in Frameworks */,
+				45025F0810DC41AA9DD82FA5 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE8D2A191992D0CE00113644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8D2A1E1992D0CE00113644 /* XCTest.framework in Frameworks */,
+				BE8D2A201992D0CE00113644 /* UIKit.framework in Frameworks */,
+				BE8D2A1F1992D0CE00113644 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE8D29F21992D0CD00113644 = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A041992D0CD00113644 /* DARPFlickrAroundYou */,
+				BE8D2A231992D0CE00113644 /* DARPFlickrAroundYouTests */,
+				BE8D29FD1992D0CD00113644 /* Frameworks */,
+				BE8D29FC1992D0CD00113644 /* Products */,
+				9059713593684E94813763A2 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		BE8D29FC1992D0CD00113644 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D29FB1992D0CD00113644 /* DARPFlickrAroundYou.app */,
+				BE8D2A1C1992D0CE00113644 /* DARPFlickrAroundYouTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE8D29FD1992D0CD00113644 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A421992D5AC00113644 /* CoreLocation.framework */,
+				BE8D2A401992D59F00113644 /* MapKit.framework */,
+				BE8D29FE1992D0CD00113644 /* Foundation.framework */,
+				BE8D2A001992D0CD00113644 /* CoreGraphics.framework */,
+				BE8D2A021992D0CD00113644 /* UIKit.framework */,
+				BE8D2A1D1992D0CE00113644 /* XCTest.framework */,
+				00770F47B67B4914B3593803 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE8D2A041992D0CD00113644 /* DARPFlickrAroundYou */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A331992D50400113644 /* Class */,
+				BE8D2A0D1992D0CD00113644 /* DARPAppDelegate.h */,
+				BE8D2A0E1992D0CD00113644 /* DARPAppDelegate.m */,
+				BE8D2A101992D0CD00113644 /* Main.storyboard */,
+				BE8D2A161992D0CD00113644 /* Images.xcassets */,
+				BE8D2A051992D0CD00113644 /* Supporting Files */,
+			);
+			path = DARPFlickrAroundYou;
+			sourceTree = "<group>";
+		};
+		BE8D2A051992D0CD00113644 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A061992D0CD00113644 /* DARPFlickrAroundYou-Info.plist */,
+				BE8D2A071992D0CD00113644 /* InfoPlist.strings */,
+				BE8D2A0A1992D0CD00113644 /* main.m */,
+				BE8D2A0C1992D0CD00113644 /* DARPFlickrAroundYou-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE8D2A231992D0CE00113644 /* DARPFlickrAroundYouTests */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A291992D0CE00113644 /* DARPFlickrAroundYouTests.m */,
+				BE8D2A241992D0CE00113644 /* Supporting Files */,
+			);
+			path = DARPFlickrAroundYouTests;
+			sourceTree = "<group>";
+		};
+		BE8D2A241992D0CE00113644 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A251992D0CE00113644 /* DARPFlickrAroundYouTests-Info.plist */,
+				BE8D2A261992D0CE00113644 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE8D2A331992D50400113644 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A341992D50400113644 /* Interface */,
+				BE8D2A381992D50400113644 /* Logic */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		BE8D2A341992D50400113644 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A351992D50400113644 /* Controller */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		BE8D2A351992D50400113644 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A361992D50400113644 /* DARPViewController.h */,
+				BE8D2A371992D50400113644 /* DARPViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BE8D2A381992D50400113644 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A391992D50400113644 /* Flickr */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		BE8D2A391992D50400113644 /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				BE8D2A3A1992D50400113644 /* VEFlickrConnection.h */,
+				BE8D2A3B1992D50400113644 /* VEFlickrConnection.m */,
+			);
+			path = Flickr;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE8D29FA1992D0CD00113644 /* DARPFlickrAroundYou */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE8D2A2D1992D0CE00113644 /* Build configuration list for PBXNativeTarget "DARPFlickrAroundYou" */;
+			buildPhases = (
+				62C01AA1B6314287861B6A93 /* Check Pods Manifest.lock */,
+				BE8D29F71992D0CD00113644 /* Sources */,
+				BE8D29F81992D0CD00113644 /* Frameworks */,
+				BE8D29F91992D0CD00113644 /* Resources */,
+				7BE37D887CAD4DAEB38D3D8B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DARPFlickrAroundYou;
+			productName = DARPFlickrAroundYou;
+			productReference = BE8D29FB1992D0CD00113644 /* DARPFlickrAroundYou.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BE8D2A1B1992D0CE00113644 /* DARPFlickrAroundYouTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE8D2A301992D0CE00113644 /* Build configuration list for PBXNativeTarget "DARPFlickrAroundYouTests" */;
+			buildPhases = (
+				BE8D2A181992D0CE00113644 /* Sources */,
+				BE8D2A191992D0CE00113644 /* Frameworks */,
+				BE8D2A1A1992D0CE00113644 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE8D2A221992D0CE00113644 /* PBXTargetDependency */,
+			);
+			name = DARPFlickrAroundYouTests;
+			productName = DARPFlickrAroundYouTests;
+			productReference = BE8D2A1C1992D0CE00113644 /* DARPFlickrAroundYouTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE8D29F31992D0CD00113644 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DARP;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Alessio Roberto";
+				TargetAttributes = {
+					BE8D29FA1992D0CD00113644 = {
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					BE8D2A1B1992D0CE00113644 = {
+						TestTargetID = BE8D29FA1992D0CD00113644;
+					};
+				};
+			};
+			buildConfigurationList = BE8D29F61992D0CD00113644 /* Build configuration list for PBXProject "DARPFlickrAroundYou" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BE8D29F21992D0CD00113644;
+			productRefGroup = BE8D29FC1992D0CD00113644 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE8D29FA1992D0CD00113644 /* DARPFlickrAroundYou */,
+				BE8D2A1B1992D0CE00113644 /* DARPFlickrAroundYouTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE8D29F91992D0CD00113644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8D2A171992D0CD00113644 /* Images.xcassets in Resources */,
+				BE8D2A091992D0CD00113644 /* InfoPlist.strings in Resources */,
+				BE8D2A121992D0CD00113644 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE8D2A1A1992D0CE00113644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8D2A281992D0CE00113644 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		62C01AA1B6314287861B6A93 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7BE37D887CAD4DAEB38D3D8B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE8D29F71992D0CD00113644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8D2A3C1992D50400113644 /* DARPViewController.m in Sources */,
+				BE8D2A3D1992D50400113644 /* VEFlickrConnection.m in Sources */,
+				BE8D2A0B1992D0CD00113644 /* main.m in Sources */,
+				BE8D2A0F1992D0CD00113644 /* DARPAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE8D2A181992D0CE00113644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8D2A2A1992D0CE00113644 /* DARPFlickrAroundYouTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BE8D2A221992D0CE00113644 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE8D29FA1992D0CD00113644 /* DARPFlickrAroundYou */;
+			targetProxy = BE8D2A211992D0CE00113644 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BE8D2A071992D0CD00113644 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE8D2A081992D0CD00113644 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BE8D2A101992D0CD00113644 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE8D2A111992D0CD00113644 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BE8D2A261992D0CE00113644 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE8D2A271992D0CE00113644 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE8D2A2B1992D0CE00113644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BE8D2A2C1992D0CE00113644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BE8D2A2E1992D0CE00113644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9059713593684E94813763A2 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DARPFlickrAroundYou/DARPFlickrAroundYou-Prefix.pch";
+				INFOPLIST_FILE = "DARPFlickrAroundYou/DARPFlickrAroundYou-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BE8D2A2F1992D0CE00113644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9059713593684E94813763A2 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DARPFlickrAroundYou/DARPFlickrAroundYou-Prefix.pch";
+				INFOPLIST_FILE = "DARPFlickrAroundYou/DARPFlickrAroundYou-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BE8D2A311992D0CE00113644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DARPFlickrAroundYou.app/DARPFlickrAroundYou";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DARPFlickrAroundYou/DARPFlickrAroundYou-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DARPFlickrAroundYouTests/DARPFlickrAroundYouTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BE8D2A321992D0CE00113644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DARPFlickrAroundYou.app/DARPFlickrAroundYou";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DARPFlickrAroundYou/DARPFlickrAroundYou-Prefix.pch";
+				INFOPLIST_FILE = "DARPFlickrAroundYouTests/DARPFlickrAroundYouTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE8D29F61992D0CD00113644 /* Build configuration list for PBXProject "DARPFlickrAroundYou" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE8D2A2B1992D0CE00113644 /* Debug */,
+				BE8D2A2C1992D0CE00113644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE8D2A2D1992D0CE00113644 /* Build configuration list for PBXNativeTarget "DARPFlickrAroundYou" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE8D2A2E1992D0CE00113644 /* Debug */,
+				BE8D2A2F1992D0CE00113644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE8D2A301992D0CE00113644 /* Build configuration list for PBXNativeTarget "DARPFlickrAroundYouTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE8D2A311992D0CE00113644 /* Debug */,
+				BE8D2A321992D0CE00113644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE8D29F31992D0CD00113644 /* Project object */;
+}
