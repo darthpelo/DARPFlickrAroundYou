@@ -20,11 +20,17 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - JPSThumbnailAnnotation (1.0.0)
+  - MBProgressHUD (0.8)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - JPSThumbnailAnnotation
+  - MBProgressHUD (~> 0.8)
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  JPSThumbnailAnnotation: 3146c1cc9bdfb5e12888cf6c85d8d35940e66c0d
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
 
 COCOAPODS: 0.33.1

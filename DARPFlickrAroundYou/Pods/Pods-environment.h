@@ -48,3 +48,15 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// JPSThumbnailAnnotation
+#define COCOAPODS_POD_AVAILABLE_JPSThumbnailAnnotation
+#define COCOAPODS_VERSION_MAJOR_JPSThumbnailAnnotation 1
+#define COCOAPODS_VERSION_MINOR_JPSThumbnailAnnotation 0
+#define COCOAPODS_VERSION_PATCH_JPSThumbnailAnnotation 0
+
+// MBProgressHUD
+#define COCOAPODS_POD_AVAILABLE_MBProgressHUD
+#define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
+#define COCOAPODS_VERSION_MINOR_MBProgressHUD 8
+#define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
+

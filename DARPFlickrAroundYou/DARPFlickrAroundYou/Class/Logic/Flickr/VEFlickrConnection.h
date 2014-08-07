@@ -10,16 +10,22 @@
 
 @interface VEFlickrConnection : NSObject
 
++ (VEFlickrConnection *)flickrManager;
+
 /**
- *    Return list of all photos in a set
+ *    Return list of all photos in a radius of 10km around a couple of coordinate
  *
- *    @param setid   The set id.
+ *    @param location   A CLLocation value
  *    @param success A block
  *    @param failure A block
  */
-- (void)getPhotosInSet:(NSString *)setid
-                success:(void(^)(NSArray *responseData))success
-                failure:(void (^)(id error))failure;
+- (void)searchPhotosWithLocation:(CLLocationCoordinate2D)location
+                         success:(void (^)(NSArray *list))success
+                         failure:(void (^)(NSError *error))failure;
+
+- (void)getPhotoCoordinate:(NSString *)photoId
+                   success:(void(^)(CLLocationCoordinate2D coordinate))success
+                   failure:(void(^)(NSError *error))failure;
 
 /**
  *    Return photos url
@@ -30,6 +36,6 @@
  */
 - (void)getPhotoThumb:(NSString *)photoid
               success:(void (^)(NSDictionary *responseData))success
-              failure:(void (^)(id error))failure;
+              failure:(void (^)(NSError *error))failure;
 
 @end
