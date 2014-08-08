@@ -18,7 +18,9 @@
 
 static double const kDARPMinDistance = 100.0;
 
-@interface DARPViewController () <MKMapViewDelegate>
+@interface DARPViewController () <MKMapViewDelegate> {
+    BOOL requestInProgress;
+}
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocation *lastUserLocation;
@@ -45,11 +47,15 @@ static double const kDARPMinDistance = 100.0;
 {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
+    requestInProgress = YES;
+    
     __weak __typeof(self)weakSelf = self;
     [[DARPPhotosDownloadManager sharedManager] downloadPhotoAroundCoordinate:newUserLocation success:^(NSArray *list) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        requestInProgress = NO;
         
         [strongSelf.mapView addAnnotations:[strongSelf annotationsFromList:list]];
     } failure:^(NSError *error) {
@@ -65,9 +71,12 @@ static double const kDARPMinDistance = 100.0;
         
         JPSThumbnail *thumb = [[JPSThumbnail alloc] init];
         thumb.coordinate = photo.photoCoordinate;
-        thumb.image = photo.photoTumb;
         
-        [annotations addObject:[JPSThumbnailAnnotation annotationWithThumbnail:thumb]];
+        if (photo.photoTumb != nil) {
+            thumb.image = photo.photoTumb;
+            
+            [annotations addObject:[JPSThumbnailAnnotation annotationWithThumbnail:thumb]];
+        }
     }
 
     return annotations;
@@ -85,7 +94,7 @@ static double const kDARPMinDistance = 100.0;
     
     CLLocationDistance distance = [self.lastUserLocation distanceFromLocation:currentLoc];
     
-    if (distance > kDARPMinDistance) {
+    if (distance > kDARPMinDistance && requestInProgress == NO) {
         return YES;
     }
     
@@ -118,23 +127,6 @@ static double const kDARPMinDistance = 100.0;
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if (annotation == mapView.userLocation)
         return nil;
-    
-    /*
-     static NSString *s = @"ann";
-     MKAnnotationView *pin = [map dequeueReusableAnnotationViewWithIdentifier:s];
-     if (!pin) {
-     pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:s];
-     pin.canShowCallout = YES;
-     pin.image = [UIImage imageNamed:@"marker"];
-     pin.calloutOffset = CGPointMake(0, 0);
-     UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
-     [button addTarget:self
-     action:@selector(checkinButton) forControlEvents:UIControlEventTouchUpInside];
-     pin.rightCalloutAccessoryView = button;
-     
-     }
-     return pin;
-     */
     
     if ([annotation conformsToProtocol:@protocol(JPSThumbnailAnnotationProtocol)]) {
         return [((NSObject<JPSThumbnailAnnotationProtocol> *)annotation) annotationViewInMap:mapView];

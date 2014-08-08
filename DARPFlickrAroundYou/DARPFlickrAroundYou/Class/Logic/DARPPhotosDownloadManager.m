@@ -42,28 +42,31 @@
 #pragma mark - Public methods
 - (void)downloadPhotoAroundCoordinate:(CLLocationCoordinate2D)coordinate success:(void (^)(NSArray *list))success failure:(void (^)(NSError *error))failure;
 {
-    // Search photos around user location (radius 2 km accurancy 8)
-    [[VEFlickrConnection flickrManager] searchPhotosWithLocation:coordinate
-                                                         success:^(NSArray *list) {
-                                                             // Collect information about photos: coordinate and small thumb
-                                                             [self collectPhotoInformation:list success:^(NSArray *list) {
-                                                                 success(list);
+    // Search photos around user location (radius 1 km accurancy 10)
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    
+    dispatch_async(queue,^{
+        [[VEFlickrConnection flickrManager] searchPhotosWithLocation:coordinate
+                                                             success:^(NSArray *list) {
+                                                                 // Collect information about photos: coordinate and small thumb
+                                                                 [self collectPhotoInformation:list success:^(NSArray *list) {
+                                                                     success(list);
+                                                                 }];
+                                                             } failure:^(NSError *error) {
+                                                                 NSLog(@"%@", error.debugDescription);
                                                              }];
-                                                         } failure:^(NSError *error) {
-                                                             NSLog(@"%@", error.debugDescription);
-                                                         }];
+    });
 }
 
 #pragma mark - Private methods
 
 - (void)collectPhotoInformation:(NSArray *)list success:(void(^)(NSArray *list))success
 {
-    NSUInteger totalPhotos = list.count;
-    
+    __block NSUInteger totalPhotos = list.count;
     __block NSMutableArray *blockPhotoList = self.photoList;
     __block NSMutableDictionary *blockPhotoIdMap = self.photoIdMap;
     
-    for (int i = 0; i < totalPhotos; i++) {
+    for (int i = 0; i < list.count; i++) {
         NSDictionary *element = list[i];
         
         if (blockPhotoIdMap[element[@"id"]] == nil) {
@@ -93,6 +96,7 @@
                                                                                       
                                                                                       //This is your completion handler
                                                                                       dispatch_sync(dispatch_get_main_queue(), ^{
+                                                                                          NSLog(@"%s Image ready", __PRETTY_FUNCTION__);
                                                                                           photo.photoTumb = [UIImage imageWithData:imageData];
                                                                                       });
                                                                                   });
@@ -100,7 +104,10 @@
                                                                    // Add DARPPhoto to the final list
                                                                    [blockPhotoList addObject:photo];
                                                                    
-                                                                   if (blockPhotoList.count == totalPhotos) {
+                                                                   totalPhotos--;
+                                                                   NSLog(@"%s %d", __PRETTY_FUNCTION__, totalPhotos);
+                                                                   if (totalPhotos == 0) {
+                                                                       NSLog(@"%s All photos ready", __PRETTY_FUNCTION__);
                                                                        success(blockPhotoList);
                                                                    }
                                                                    
