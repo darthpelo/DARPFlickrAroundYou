@@ -98,19 +98,18 @@
                                                                                       dispatch_sync(dispatch_get_main_queue(), ^{
                                                                                           NSLog(@"%s Image ready", __PRETTY_FUNCTION__);
                                                                                           photo.photoTumb = [UIImage imageWithData:imageData];
+                                                                                          
+                                                                                          // Add DARPPhoto to the final list
+                                                                                          [blockPhotoList addObject:photo];
+                                                                                          
+                                                                                          totalPhotos--;
+                                                                                          NSLog(@"%s %d", __PRETTY_FUNCTION__, totalPhotos);
+                                                                                          if (totalPhotos == 0) {
+                                                                                              NSLog(@"%s All photos are ready", __PRETTY_FUNCTION__);
+                                                                                              success(blockPhotoList);
+                                                                                          }
                                                                                       });
                                                                                   });
-                                                                   
-                                                                   // Add DARPPhoto to the final list
-                                                                   [blockPhotoList addObject:photo];
-                                                                   
-                                                                   totalPhotos--;
-                                                                   NSLog(@"%s %d", __PRETTY_FUNCTION__, totalPhotos);
-                                                                   if (totalPhotos == 0) {
-                                                                       NSLog(@"%s All photos ready", __PRETTY_FUNCTION__);
-                                                                       success(blockPhotoList);
-                                                                   }
-                                                                   
                                                                } failure:^(NSError *error) {
                                                                    NSLog(@"%@", error.debugDescription);
                                                                }];
