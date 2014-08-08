@@ -16,9 +16,12 @@
 #import "JPSThumbnailAnnotation.h"
 #import "UIImageView+AFNetworking.h"
 
+static double const kDARPMinDistance = 100.0;
+
 @interface DARPViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) CLLocation *lastUserLocation;
 
 @end
 
@@ -70,27 +73,73 @@
     return annotations;
 }
 
+/**
+ * If distance from last user location is more than 100m, return YES
+ */
+- (BOOL)checkDistance:(CLLocationCoordinate2D)newUserLocation
+{
+    if (self.lastUserLocation == nil)
+        return YES;
+    
+    CLLocation *currentLoc = [[CLLocation alloc] initWithLatitude:newUserLocation.latitude longitude:newUserLocation.longitude];
+    
+    CLLocationDistance distance = [self.lastUserLocation distanceFromLocation:currentLoc];
+    
+    if (distance > kDARPMinDistance) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 #pragma mark - MKMapView delegate
 
-- (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation {
-    MKCoordinateRegion region;
-    MKCoordinateSpan span;
-    span.latitudeDelta = 0.005;
-    span.longitudeDelta = 0.005;
+- (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation
+{
     CLLocationCoordinate2D location;
     location.latitude = aUserLocation.coordinate.latitude;
     location.longitude = aUserLocation.coordinate.longitude;
-    region.span = span;
-    region.center = location;
-    [aMapView setRegion:region animated:YES];
     
-    [self updatePhotosList:location];
+    if ([self checkDistance:location] == YES) {
+        _lastUserLocation = [[CLLocation alloc] initWithLatitude:location.latitude longitude:location.longitude];
+        
+        [self updatePhotosList:location];
+        
+        MKCoordinateRegion region;
+        MKCoordinateSpan span;
+        span.latitudeDelta = 0.002;
+        span.longitudeDelta = 0.002;
+        region.span = span;
+        region.center = location;
+        [aMapView setRegion:region animated:YES];
+    }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if (annotation == mapView.userLocation)
+        return nil;
+    
+    /*
+     static NSString *s = @"ann";
+     MKAnnotationView *pin = [map dequeueReusableAnnotationViewWithIdentifier:s];
+     if (!pin) {
+     pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:s];
+     pin.canShowCallout = YES;
+     pin.image = [UIImage imageNamed:@"marker"];
+     pin.calloutOffset = CGPointMake(0, 0);
+     UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
+     [button addTarget:self
+     action:@selector(checkinButton) forControlEvents:UIControlEventTouchUpInside];
+     pin.rightCalloutAccessoryView = button;
+     
+     }
+     return pin;
+     */
+    
     if ([annotation conformsToProtocol:@protocol(JPSThumbnailAnnotationProtocol)]) {
         return [((NSObject<JPSThumbnailAnnotationProtocol> *)annotation) annotationViewInMap:mapView];
     }
+    
     return nil;
 }
 
