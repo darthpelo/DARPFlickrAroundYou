@@ -6,15 +6,13 @@
 //  Copyright (c) 2014 Alessio Roberto. All rights reserved.
 //
 
-#import <MapKit/MapKit.h>
+@import MapKit;
 
 #import "DARPViewController.h"
-#import "DARPPhoto.h"
+#import "DARPPhoto+MKAnnotation.h"
 
 #import "DARPPhotosDownloadManager.h"
 #import "MBProgressHUD.h"
-#import "JPSThumbnailAnnotation.h"
-#import "UIImageView+AFNetworking.h"
 
 static double const kDARPMinDistance = 100.0;
 
@@ -24,7 +22,7 @@ static double const kDARPMinDistance = 100.0;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocation *lastUserLocation;
-
+@property (strong, nonatomic) NSArray *photosList;
 @end
 
 @implementation DARPViewController
@@ -53,33 +51,15 @@ static double const kDARPMinDistance = 100.0;
     [[DARPPhotosDownloadManager sharedManager] downloadPhotoAroundCoordinate:newUserLocation success:^(NSArray *list) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [MBProgressHUD hideAllHUDsForView:strongSelf.view animated:YES];
+        
+        [strongSelf proccessAnnotations:list];
         
         requestInProgress = NO;
         
-        [strongSelf.mapView addAnnotations:[strongSelf annotationsFromList:list]];
     } failure:^(NSError *error) {
         abort();
     }];
-}
-
-- (NSArray *)annotationsFromList:(NSArray *)photosList {
-    NSMutableArray *annotations = [NSMutableArray new];
-    
-    for (int i = 0; i < photosList.count; i++) {
-        DARPPhoto *photo = photosList[i];
-        
-        JPSThumbnail *thumb = [[JPSThumbnail alloc] init];
-        thumb.coordinate = photo.photoCoordinate;
-        
-        if (photo.photoTumb != nil) {
-            thumb.image = photo.photoTumb;
-            
-            [annotations addObject:[JPSThumbnailAnnotation annotationWithThumbnail:thumb]];
-        }
-    }
-
-    return annotations;
 }
 
 /**
@@ -99,6 +79,30 @@ static double const kDARPMinDistance = 100.0;
     }
     
     return NO;
+}
+
+-(void)removeAllAnnotationExceptOfCurrentUser
+{
+    NSMutableArray *annForRemove = [[NSMutableArray alloc] initWithArray:self.mapView.annotations];
+    if ([self.mapView.annotations.lastObject isKindOfClass:[MKUserLocation class]]) {
+        [annForRemove removeObject:self.mapView.annotations.lastObject];
+    } else {
+        for (id <MKAnnotation> annot_ in self.mapView.annotations)
+        {
+            if ([annot_ isKindOfClass:[MKUserLocation class]] ) {
+                [annForRemove removeObject:annot_];
+                break;
+            }
+        }
+    }
+    
+    [self.mapView removeAnnotations:annForRemove];
+}
+
+- (void)proccessAnnotations:(NSArray *)list
+{
+    [self removeAllAnnotationExceptOfCurrentUser];
+    [self.mapView addAnnotations:list];
 }
 
 #pragma mark - MKMapView delegate
@@ -124,15 +128,42 @@ static double const kDARPMinDistance = 100.0;
     }
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
     if (annotation == mapView.userLocation)
         return nil;
     
-    if ([annotation conformsToProtocol:@protocol(JPSThumbnailAnnotationProtocol)]) {
-        return [((NSObject<JPSThumbnailAnnotationProtocol> *)annotation) annotationViewInMap:mapView];
+    static NSString *reuseId = @"DARPViewController";
+    MKAnnotationView *view = [mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
+    if(!view)
+    {
+        view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
+        view.canShowCallout = YES;
+        if([mapView.delegate respondsToSelector:@selector(mapView:annotationView:calloutAccessoryControlTapped:)])
+        {
+            view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        }
+        view.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    }
+    if([view.leftCalloutAccessoryView isKindOfClass:[UIImageView class]])
+    {
+        UIImageView *imageView = (UIImageView *)(view.leftCalloutAccessoryView);
+        imageView.image = nil;
     }
     
-    return nil;
+    return view;
+}
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    if([view.leftCalloutAccessoryView isKindOfClass:[UIImageView class]])
+    {
+        UIImageView *imageView = (UIImageView *)(view.leftCalloutAccessoryView);
+        if([view.annotation respondsToSelector:@selector(thumbnail)])
+        {
+            imageView.image = [view.annotation performSelector:@selector(thumbnail)];
+        }
+    }
 }
 
 @end

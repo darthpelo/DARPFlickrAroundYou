@@ -74,6 +74,10 @@
             
             photo.photoId = element[@"id"];
             
+            if (element[@"title"]) {
+                photo.title = element[@"title"];
+            }
+            
             [blockPhotoIdMap setObject:photo.photoId forKey:photo.photoId];
             
             // Request photo's coordinate
@@ -86,30 +90,18 @@
                                                                    /**
                                                                     { "label": "Square", "width": 75, "height": 75, "source": "https:\/\/farm3.staticflickr.com\/2900\/14300335396_3e4e9ffbd8_s.jpg", "url": "https:\/\/www.flickr.com\/photos\/darthpelo02\/14300335396\/sizes\/sq\/", "media": "photo" }
                                                                     */
+                                                                   
                                                                    photo.photoURL = responseData[@"source"];
                                                                    
-                                                                   // Download image
-                                                                   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-                                                                                  ^{
-                                                                                      NSURL *imageURL = [NSURL URLWithString:photo.photoURL];
-                                                                                      NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-                                                                                      
-                                                                                      //This is your completion handler
-                                                                                      dispatch_sync(dispatch_get_main_queue(), ^{
-                                                                                          NSLog(@"%s Image ready", __PRETTY_FUNCTION__);
-                                                                                          photo.photoTumb = [UIImage imageWithData:imageData];
-                                                                                          
-                                                                                          // Add DARPPhoto to the final list
-                                                                                          [blockPhotoList addObject:photo];
-                                                                                          
-                                                                                          totalPhotos--;
-                                                                                          NSLog(@"%s %d", __PRETTY_FUNCTION__, totalPhotos);
-                                                                                          if (totalPhotos == 0) {
-                                                                                              NSLog(@"%s All photos are ready", __PRETTY_FUNCTION__);
-                                                                                              success(blockPhotoList);
-                                                                                          }
-                                                                                      });
-                                                                                  });
+                                                                   // Add DARPPhoto to the final list
+                                                                   [blockPhotoList addObject:photo];
+                                                                   
+                                                                   totalPhotos--;
+                                                                   NSLog(@"%s %lu", __PRETTY_FUNCTION__, (unsigned long)totalPhotos);
+                                                                   if (totalPhotos == 0) {
+                                                                       NSLog(@"%s All photos are ready", __PRETTY_FUNCTION__);
+                                                                       success(blockPhotoList);
+                                                                   }
                                                                } failure:^(NSError *error) {
                                                                    NSLog(@"%@", error.debugDescription);
                                                                }];
