@@ -11,6 +11,6 @@
 
 @interface DARPPhoto (MKAnnotation) <MKAnnotation>
 
--(UIImage *)thumbnail;
+- (UIImage *)thumbnail;
 
 @end

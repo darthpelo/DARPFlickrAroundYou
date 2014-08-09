@@ -40,13 +40,13 @@
 }
 
 #pragma mark - Public methods
-- (void)downloadPhotoAroundCoordinate:(CLLocationCoordinate2D)coordinate success:(void (^)(NSArray *list))success failure:(void (^)(NSError *error))failure;
+- (void)downloadPhotoAroundCoordinate:(CLLocationCoordinate2D)coordinate radius:(NSUInteger)radius success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    // Search photos around user location (radius 1 km accurancy 10)
+    // Search photos around user location
     dispatch_queue_t queue = dispatch_get_main_queue();
     
     dispatch_async(queue,^{
-        [[VEFlickrConnection flickrManager] searchPhotosWithLocation:coordinate
+        [[VEFlickrConnection flickrManager] searchPhotosWithLocation:coordinate radius:radius
                                                              success:^(NSArray *list) {
                                                                  // Collect information about photos: coordinate and small thumb
                                                                  [self collectPhotoInformation:list success:^(NSArray *list) {
@@ -97,9 +97,8 @@
                                                                    [blockPhotoList addObject:photo];
                                                                    
                                                                    totalPhotos--;
-                                                                   NSLog(@"%s %lu", __PRETTY_FUNCTION__, (unsigned long)totalPhotos);
+                                                                   NSLog(@"%lu", (unsigned long)totalPhotos);
                                                                    if (totalPhotos == 0) {
-                                                                       NSLog(@"%s All photos are ready", __PRETTY_FUNCTION__);
                                                                        success(blockPhotoList);
                                                                    }
                                                                } failure:^(NSError *error) {
@@ -108,6 +107,12 @@
                                                            } failure:^(NSError *error) {
                                                                NSLog(@"%@", error.debugDescription);
                                                            }];
+        } else {
+            totalPhotos--;
+            NSLog(@"%lu", (unsigned long)totalPhotos);
+            if (totalPhotos == 0) {
+                success(blockPhotoList);
+            }
         }
     }
 }

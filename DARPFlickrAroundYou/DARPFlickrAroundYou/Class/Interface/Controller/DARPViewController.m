@@ -16,13 +16,14 @@
 
 static double const kDARPMinDistance = 100.0;
 
-@interface DARPViewController () <MKMapViewDelegate> {
-    BOOL requestInProgress;
-}
+@interface DARPViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) CLLocation *lastUserLocation;
-@property (strong, nonatomic) NSArray *photosList;
+@property (nonatomic, assign) CLLocationCoordinate2D lastUserLocation;
+@property (nonatomic, strong) NSArray *photosList;
+@property (nonatomic, assign) BOOL nextRegionChangeIsFromUserInteraction;
+@property (nonatomic, assign) BOOL requestInProgress;
+
 @end
 
 @implementation DARPViewController
@@ -45,17 +46,33 @@ static double const kDARPMinDistance = 100.0;
 {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    requestInProgress = YES;
+    self.requestInProgress = YES;
     
+    NSUInteger radius = 1;
+    /*
+    NSLog(@"%f", self.mapView.region.span.latitudeDelta);
+    
+    if (self.mapView.region.span.latitudeDelta > 0.002 && self.mapView.region.span.latitudeDelta < 0.003) {
+        radius = 2;
+    } else if (self.mapView.region.span.latitudeDelta > 0.003 && self.mapView.region.span.latitudeDelta < 0.004) {
+        radius = 3;
+    } else if (self.mapView.region.span.latitudeDelta > 0.004 && self.mapView.region.span.latitudeDelta < 0.005) {
+        radius = 4;
+    } else if (self.mapView.region.span.latitudeDelta > 0.005 && self.mapView.region.span.latitudeDelta < 0.007) {
+        radius = 5;
+    } else if (self.mapView.region.span.latitudeDelta > 0.007) {
+        radius = 6;
+    }
+     */
     __weak __typeof(self)weakSelf = self;
-    [[DARPPhotosDownloadManager sharedManager] downloadPhotoAroundCoordinate:newUserLocation success:^(NSArray *list) {
+    [[DARPPhotosDownloadManager sharedManager] downloadPhotoAroundCoordinate:newUserLocation radius:radius success:^(NSArray *list) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
-        
-        [MBProgressHUD hideAllHUDsForView:strongSelf.view animated:YES];
         
         [strongSelf proccessAnnotations:list];
         
-        requestInProgress = NO;
+        [MBProgressHUD hideAllHUDsForView:strongSelf.view animated:YES];
+        
+        self.requestInProgress = NO;
         
     } failure:^(NSError *error) {
         abort();
@@ -67,14 +84,11 @@ static double const kDARPMinDistance = 100.0;
  */
 - (BOOL)checkDistance:(CLLocationCoordinate2D)newUserLocation
 {
-    if (self.lastUserLocation == nil)
-        return YES;
-    
     CLLocation *currentLoc = [[CLLocation alloc] initWithLatitude:newUserLocation.latitude longitude:newUserLocation.longitude];
+    CLLocation *lastLoc = [[CLLocation alloc] initWithLatitude:self.lastUserLocation.latitude longitude:self.lastUserLocation.longitude];
+    CLLocationDistance distance = [lastLoc distanceFromLocation:currentLoc];
     
-    CLLocationDistance distance = [self.lastUserLocation distanceFromLocation:currentLoc];
-    
-    if (distance > kDARPMinDistance && requestInProgress == NO) {
+    if (distance > kDARPMinDistance && self.requestInProgress == NO) {
         return YES;
     }
     
@@ -107,6 +121,38 @@ static double const kDARPMinDistance = 100.0;
 
 #pragma mark - MKMapView delegate
 
+/*
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+{
+	UIView* view = mapView.subviews.firstObject;
+	
+	//	Look through gesture recognizers to determine
+	//	whether this region change is from user interaction
+	for(UIGestureRecognizer* recognizer in view.gestureRecognizers)
+	{
+		//	The user caused of this...
+		if(recognizer.state == UIGestureRecognizerStateBegan
+		   || recognizer.state == UIGestureRecognizerStateEnded)
+		{
+			self.nextRegionChangeIsFromUserInteraction = YES;
+			break;
+		}
+	}
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+	if(self.nextRegionChangeIsFromUserInteraction)
+	{
+		self.nextRegionChangeIsFromUserInteraction = NO;
+		
+		if (self.requestInProgress == NO && mapView.region.span.latitudeDelta > 0.002) {
+            [self updatePhotosList:self.lastUserLocation];
+        }
+	}
+}
+ */
+
 - (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation
 {
     CLLocationCoordinate2D location;
@@ -114,7 +160,7 @@ static double const kDARPMinDistance = 100.0;
     location.longitude = aUserLocation.coordinate.longitude;
     
     if ([self checkDistance:location] == YES) {
-        _lastUserLocation = [[CLLocation alloc] initWithLatitude:location.latitude longitude:location.longitude];
+        self.lastUserLocation = location;
         
         [self updatePhotosList:location];
         
@@ -135,20 +181,23 @@ static double const kDARPMinDistance = 100.0;
     
     static NSString *reuseId = @"DARPViewController";
     MKAnnotationView *view = [mapView dequeueReusableAnnotationViewWithIdentifier:reuseId];
-    if(!view)
-    {
+    if(!view) {
         view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
         view.canShowCallout = YES;
-        if([mapView.delegate respondsToSelector:@selector(mapView:annotationView:calloutAccessoryControlTapped:)])
-        {
+        if([mapView.delegate respondsToSelector:@selector(mapView:annotationView:calloutAccessoryControlTapped:)]) {
             view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         }
         view.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     }
-    if([view.leftCalloutAccessoryView isKindOfClass:[UIImageView class]])
-    {
+    
+    if([view.leftCalloutAccessoryView isKindOfClass:[UIImageView class]]) {
         UIImageView *imageView = (UIImageView *)(view.leftCalloutAccessoryView);
         imageView.image = nil;
+        
+        // Start download image
+        if([view.annotation respondsToSelector:@selector(thumbnail)]) {
+            imageView.image = [view.annotation performSelector:@selector(thumbnail)];
+        }
     }
     
     return view;
@@ -156,11 +205,9 @@ static double const kDARPMinDistance = 100.0;
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    if([view.leftCalloutAccessoryView isKindOfClass:[UIImageView class]])
-    {
+    if([view.leftCalloutAccessoryView isKindOfClass:[UIImageView class]]) {
         UIImageView *imageView = (UIImageView *)(view.leftCalloutAccessoryView);
-        if([view.annotation respondsToSelector:@selector(thumbnail)])
-        {
+        if([view.annotation respondsToSelector:@selector(thumbnail)]) {
             imageView.image = [view.annotation performSelector:@selector(thumbnail)];
         }
     }

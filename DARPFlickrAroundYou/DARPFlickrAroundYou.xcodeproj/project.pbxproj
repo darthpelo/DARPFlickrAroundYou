@@ -107,9 +107,9 @@
 		BE61184A19940AA4009E8B9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BE61184B19940AC2009E8B9C /* DARPPhoto.h */,
 				BE92384119962B930057B6BA /* DARPPhoto+MKAnnotation.h */,
 				BE92384219962B930057B6BA /* DARPPhoto+MKAnnotation.m */,
+				BE61184B19940AC2009E8B9C /* DARPPhoto.h */,
 				BE61184C19940AC2009E8B9C /* DARPPhoto.m */,
 			);
 			name = Model;

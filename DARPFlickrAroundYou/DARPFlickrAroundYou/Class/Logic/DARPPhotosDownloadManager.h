@@ -10,6 +10,9 @@
 
 + (DARPPhotosDownloadManager *)sharedManager;
 
-- (void)downloadPhotoAroundCoordinate:(CLLocationCoordinate2D)coordinate success:(void (^)(NSArray *list))success failure:(void (^)(NSError *error))failure;;
+- (void)downloadPhotoAroundCoordinate:(CLLocationCoordinate2D)coordinate
+                               radius:(NSUInteger)radius
+                              success:(void (^)(NSArray *list))success
+                              failure:(void (^)(NSError *error))failure;;
 
 @end
