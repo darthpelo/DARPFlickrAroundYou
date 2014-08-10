@@ -54,17 +54,49 @@
 
 #pragma mark - Public methods
 
-- (void)searchPhotosWithLocation:(CLLocationCoordinate2D)location success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)searchPhotosWithLocation:(CLLocationCoordinate2D)location radius:(NSUInteger)radius success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSString *radius = @"1";
-    NSString *accuracy = @"10";
+    NSString *accuracy = @"11";
     
-    NSString *urlStr = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&accuracy=%@&lat=%f&lon=%f&radius=%@&per_page=10&format=json&nojsoncallback=1",
+    NSString *perpage;
+    
+    switch (radius) {
+        case 1:
+            perpage = @"20";
+            break;
+            
+        case 2:
+            perpage = @"50";
+            break;
+            
+        case 3:
+            perpage = @"70";
+            break;
+        
+        case 4:
+            perpage = @"100";
+            break;
+        
+        case 5:
+            perpage = @"160";
+            break;
+            
+        case 6:
+            perpage = @"200";
+            break;
+            
+        default:
+            perpage = @"300";
+            break;
+    }
+    
+    NSString *urlStr = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&accuracy=%@&lat=%f&lon=%f&radius=%@&per_page=%@&format=json&nojsoncallback=1",
                         self.keys[kDARPFlickrApiKey],
                         accuracy,
                         location.latitude,
                         location.longitude,
-                        radius
+                        [NSString stringWithFormat:@"%d", radius],
+                        perpage
                         ];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

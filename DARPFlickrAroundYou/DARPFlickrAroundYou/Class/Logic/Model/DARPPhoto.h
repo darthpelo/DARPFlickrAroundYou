@@ -14,6 +14,7 @@
 @property (nonatomic, assign) CLLocationCoordinate2D photoCoordinate;
 @property (nonatomic, strong) NSString *photoId;
 @property (nonatomic, strong) NSString *photoURL;
+@property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) UIImage *photoTumb;
 
 @end

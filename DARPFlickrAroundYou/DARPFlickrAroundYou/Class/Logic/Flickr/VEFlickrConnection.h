@@ -20,9 +20,17 @@
  *    @param failure A block
  */
 - (void)searchPhotosWithLocation:(CLLocationCoordinate2D)location
+                          radius:(NSUInteger)radius
                          success:(void (^)(NSArray *list))success
                          failure:(void (^)(NSError *error))failure;
 
+/**
+ *    Return photo coordinate
+ *
+ *    @param location   The photo id
+ *    @param success A block
+ *    @param failure A block
+ */
 - (void)getPhotoCoordinate:(NSString *)photoId
                    success:(void(^)(CLLocationCoordinate2D coordinate))success
                    failure:(void(^)(NSError *error))failure;

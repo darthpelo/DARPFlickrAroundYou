@@ -28,6 +28,7 @@
 		BE8D2A411992D59F00113644 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A401992D59F00113644 /* MapKit.framework */; };
 		BE8D2A431992D5AC00113644 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A421992D5AC00113644 /* CoreLocation.framework */; };
 		BE8D2A491992D75100113644 /* API-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE8D2A481992D75100113644 /* API-Keys.plist */; };
+		BE92384319962B930057B6BA /* DARPPhoto+MKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE92384219962B930057B6BA /* DARPPhoto+MKAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		BE8D2A421992D5AC00113644 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BE8D2A441992D6DD00113644 /* DARPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARPConstants.h; sourceTree = "<group>"; };
 		BE8D2A481992D75100113644 /* API-Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API-Keys.plist"; sourceTree = "<group>"; };
+		BE92384119962B930057B6BA /* DARPPhoto+MKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DARPPhoto+MKAnnotation.h"; path = "Model/DARPPhoto+MKAnnotation.h"; sourceTree = "<group>"; };
+		BE92384219962B930057B6BA /* DARPPhoto+MKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DARPPhoto+MKAnnotation.m"; path = "Model/DARPPhoto+MKAnnotation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 		BE61184A19940AA4009E8B9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BE92384119962B930057B6BA /* DARPPhoto+MKAnnotation.h */,
+				BE92384219962B930057B6BA /* DARPPhoto+MKAnnotation.m */,
 				BE61184B19940AC2009E8B9C /* DARPPhoto.h */,
 				BE61184C19940AC2009E8B9C /* DARPPhoto.m */,
 			);
@@ -384,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE61184D19940AC2009E8B9C /* DARPPhoto.m in Sources */,
+				BE92384319962B930057B6BA /* DARPPhoto+MKAnnotation.m in Sources */,
 				BE8D2A3C1992D50400113644 /* DARPViewController.m in Sources */,
 				BE8D2A3D1992D50400113644 /* VEFlickrConnection.m in Sources */,
 				BE61185019940B8A009E8B9C /* DARPPhotosDownloadManager.m in Sources */,
