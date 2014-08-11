@@ -9,20 +9,20 @@
 @import MapKit;
 
 #import "DARPViewController.h"
-#import "DARPPhoto+MKAnnotation.h"
+#import "Photo+MKAnnotation.h"
 
 #import "DARPPhotosDownloadManager.h"
 #import "MBProgressHUD.h"
 
-static double const kDARPMinDistance = 100.0;
+static double const kDARPMinDistance = 50.0;
 
 @interface DARPViewController () <MKMapViewDelegate>
 
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (nonatomic, assign) CLLocationCoordinate2D lastUserLocation;
-@property (nonatomic, strong) NSArray *photosList;
 @property (nonatomic, assign) BOOL nextRegionChangeIsFromUserInteraction;
 @property (nonatomic, assign) BOOL requestInProgress;
+@property (nonatomic, assign) CLLocationCoordinate2D lastUserLocation;
+@property (nonatomic, strong) NSArray *photosList;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
@@ -48,7 +48,7 @@ static double const kDARPMinDistance = 100.0;
     
     self.requestInProgress = YES;
     
-    NSUInteger radius = 1;
+    NSUInteger radius = 2;
     /*
     NSLog(@"%f", self.mapView.region.span.latitudeDelta);
     
@@ -115,7 +115,7 @@ static double const kDARPMinDistance = 100.0;
 
 - (void)proccessAnnotations:(NSArray *)list
 {
-    [self removeAllAnnotationExceptOfCurrentUser];
+//    [self removeAllAnnotationExceptOfCurrentUser];
     [self.mapView addAnnotations:list];
 }
 
@@ -184,6 +184,8 @@ static double const kDARPMinDistance = 100.0;
     if(!view) {
         view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseId];
         view.canShowCallout = YES;
+        view.image = [UIImage imageNamed:@"pin"];
+        view.calloutOffset = CGPointMake(0, 0);
         if([mapView.delegate respondsToSelector:@selector(mapView:annotationView:calloutAccessoryControlTapped:)]) {
             view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         }

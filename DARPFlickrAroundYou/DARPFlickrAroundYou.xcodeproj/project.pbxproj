@@ -10,6 +10,8 @@
 		45025F0810DC41AA9DD82FA5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00770F47B67B4914B3593803 /* libPods.a */; };
 		BE61184D19940AC2009E8B9C /* DARPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BE61184C19940AC2009E8B9C /* DARPPhoto.m */; };
 		BE61185019940B8A009E8B9C /* DARPPhotosDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE61184F19940B8A009E8B9C /* DARPPhotosDownloadManager.m */; };
+		BE78991B1998AACE0089A1D7 /* Photo+MKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE78991A1998AACE0089A1D7 /* Photo+MKAnnotation.m */; };
+		BE78991E1998B1DD0089A1D7 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = BE78991D1998B1DD0089A1D7 /* Photo.m */; };
 		BE8D29FF1992D0CD00113644 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D29FE1992D0CD00113644 /* Foundation.framework */; };
 		BE8D2A011992D0CD00113644 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A001992D0CD00113644 /* CoreGraphics.framework */; };
 		BE8D2A031992D0CD00113644 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A021992D0CD00113644 /* UIKit.framework */; };
@@ -29,6 +31,8 @@
 		BE8D2A431992D5AC00113644 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8D2A421992D5AC00113644 /* CoreLocation.framework */; };
 		BE8D2A491992D75100113644 /* API-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE8D2A481992D75100113644 /* API-Keys.plist */; };
 		BE92384319962B930057B6BA /* DARPPhoto+MKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE92384219962B930057B6BA /* DARPPhoto+MKAnnotation.m */; };
+		BE9238491997C60E0057B6BA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9238481997C60E0057B6BA /* CoreData.framework */; };
+		BE92384C1997C72A0057B6BA /* FlickrPhotoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE92384A1997C72A0057B6BA /* FlickrPhotoModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,10 @@
 		BE61184C19940AC2009E8B9C /* DARPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DARPPhoto.m; path = Model/DARPPhoto.m; sourceTree = "<group>"; };
 		BE61184E19940B8A009E8B9C /* DARPPhotosDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARPPhotosDownloadManager.h; sourceTree = "<group>"; };
 		BE61184F19940B8A009E8B9C /* DARPPhotosDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARPPhotosDownloadManager.m; sourceTree = "<group>"; };
+		BE7899191998AACE0089A1D7 /* Photo+MKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Photo+MKAnnotation.h"; path = "Model/Photo+MKAnnotation.h"; sourceTree = "<group>"; };
+		BE78991A1998AACE0089A1D7 /* Photo+MKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Photo+MKAnnotation.m"; path = "Model/Photo+MKAnnotation.m"; sourceTree = "<group>"; };
+		BE78991C1998B1DD0089A1D7 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Class/Logic/Model/Photo.h; sourceTree = "<group>"; };
+		BE78991D1998B1DD0089A1D7 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Class/Logic/Model/Photo.m; sourceTree = "<group>"; };
 		BE8D29FB1992D0CD00113644 /* DARPFlickrAroundYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DARPFlickrAroundYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8D29FE1992D0CD00113644 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE8D2A001992D0CD00113644 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,6 +83,8 @@
 		BE8D2A481992D75100113644 /* API-Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "API-Keys.plist"; sourceTree = "<group>"; };
 		BE92384119962B930057B6BA /* DARPPhoto+MKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DARPPhoto+MKAnnotation.h"; path = "Model/DARPPhoto+MKAnnotation.h"; sourceTree = "<group>"; };
 		BE92384219962B930057B6BA /* DARPPhoto+MKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DARPPhoto+MKAnnotation.m"; path = "Model/DARPPhoto+MKAnnotation.m"; sourceTree = "<group>"; };
+		BE9238481997C60E0057B6BA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BE92384B1997C72A0057B6BA /* FlickrPhotoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlickrPhotoModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE9238491997C60E0057B6BA /* CoreData.framework in Frameworks */,
 				BE8D2A411992D59F00113644 /* MapKit.framework in Frameworks */,
 				BE8D2A431992D5AC00113644 /* CoreLocation.framework in Frameworks */,
 				BE8D2A011992D0CD00113644 /* CoreGraphics.framework in Frameworks */,
@@ -110,6 +121,8 @@
 				BE92384119962B930057B6BA /* DARPPhoto+MKAnnotation.h */,
 				BE92384219962B930057B6BA /* DARPPhoto+MKAnnotation.m */,
 				BE61184B19940AC2009E8B9C /* DARPPhoto.h */,
+				BE7899191998AACE0089A1D7 /* Photo+MKAnnotation.h */,
+				BE78991A1998AACE0089A1D7 /* Photo+MKAnnotation.m */,
 				BE61184C19940AC2009E8B9C /* DARPPhoto.m */,
 			);
 			name = Model;
@@ -138,6 +151,7 @@
 		BE8D29FD1992D0CD00113644 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE9238481997C60E0057B6BA /* CoreData.framework */,
 				BE8D2A421992D5AC00113644 /* CoreLocation.framework */,
 				BE8D2A401992D59F00113644 /* MapKit.framework */,
 				BE8D29FE1992D0CD00113644 /* Foundation.framework */,
@@ -167,6 +181,9 @@
 				BE8D2A0A1992D0CD00113644 /* main.m */,
 				BE8D2A0C1992D0CD00113644 /* DARPFlickrAroundYou-Prefix.pch */,
 				BE8D2A481992D75100113644 /* API-Keys.plist */,
+				BE92384A1997C72A0057B6BA /* FlickrPhotoModel.xcdatamodeld */,
+				BE78991C1998B1DD0089A1D7 /* Photo.h */,
+				BE78991D1998B1DD0089A1D7 /* Photo.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -391,9 +408,12 @@
 				BE61184D19940AC2009E8B9C /* DARPPhoto.m in Sources */,
 				BE92384319962B930057B6BA /* DARPPhoto+MKAnnotation.m in Sources */,
 				BE8D2A3C1992D50400113644 /* DARPViewController.m in Sources */,
+				BE92384C1997C72A0057B6BA /* FlickrPhotoModel.xcdatamodeld in Sources */,
 				BE8D2A3D1992D50400113644 /* VEFlickrConnection.m in Sources */,
 				BE61185019940B8A009E8B9C /* DARPPhotosDownloadManager.m in Sources */,
+				BE78991B1998AACE0089A1D7 /* Photo+MKAnnotation.m in Sources */,
 				BE8D2A0B1992D0CD00113644 /* main.m in Sources */,
+				BE78991E1998B1DD0089A1D7 /* Photo.m in Sources */,
 				BE8D2A0F1992D0CD00113644 /* DARPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +543,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DARPFlickrAroundYou/DARPFlickrAroundYou-Prefix.pch";
 				INFOPLIST_FILE = "DARPFlickrAroundYou/DARPFlickrAroundYou-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -537,6 +558,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DARPFlickrAroundYou/DARPFlickrAroundYou-Prefix.pch";
 				INFOPLIST_FILE = "DARPFlickrAroundYou/DARPFlickrAroundYou-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -613,6 +635,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BE92384A1997C72A0057B6BA /* FlickrPhotoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BE92384B1997C72A0057B6BA /* FlickrPhotoModel.xcdatamodel */,
+			);
+			currentVersion = BE92384B1997C72A0057B6BA /* FlickrPhotoModel.xcdatamodel */;
+			path = FlickrPhotoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BE8D29F31992D0CD00113644 /* Project object */;
 }

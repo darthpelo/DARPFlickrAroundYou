@@ -62,11 +62,11 @@
     
     switch (radius) {
         case 1:
-            perpage = @"20";
+            perpage = @"30";
             break;
             
         case 2:
-            perpage = @"50";
+            perpage = @"30";
             break;
             
         case 3:

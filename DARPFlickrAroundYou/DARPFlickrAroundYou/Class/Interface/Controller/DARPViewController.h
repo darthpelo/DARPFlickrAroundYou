@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Alessio Roberto. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface DARPViewController : UIViewController
 
