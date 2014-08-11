@@ -78,6 +78,7 @@
                 photo.title = element[@"title"];
             }
             
+            // Add photo id to the map
             [blockPhotoIdMap setObject:photo.photoId forKey:photo.photoId];
             
             // Request photo's coordinate
@@ -97,7 +98,7 @@
                                                                    [blockPhotoList addObject:photo];
                                                                    
                                                                    totalPhotos--;
-                                                                   NSLog(@"%lu", (unsigned long)totalPhotos);
+                                                                   
                                                                    if (totalPhotos == 0) {
                                                                        success(blockPhotoList);
                                                                    }
@@ -109,7 +110,7 @@
                                                            }];
         } else {
             totalPhotos--;
-            NSLog(@"%lu", (unsigned long)totalPhotos);
+            
             if (totalPhotos == 0) {
                 success(blockPhotoList);
             }
