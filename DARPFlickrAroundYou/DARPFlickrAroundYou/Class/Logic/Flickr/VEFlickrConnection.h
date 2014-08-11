@@ -13,7 +13,7 @@
 + (VEFlickrConnection *)flickrManager;
 
 /**
- *    Return list of all photos in a radius of 10km around a couple of coordinate
+ *    Return list of all photos in a radius of 10km around a couple of coordinate. https://www.flickr.com/services
  *
  *    @param location   A CLLocation value
  *    @param success A block
@@ -25,7 +25,7 @@
                          failure:(void (^)(NSError *error))failure;
 
 /**
- *    Return photo coordinate
+ *    Return photo coordinate. https://www.flickr.com/services
  *
  *    @param location   The photo id
  *    @param success A block
@@ -36,7 +36,7 @@
                    failure:(void(^)(NSError *error))failure;
 
 /**
- *    Return photos url
+ *    Return photos url. https://www.flickr.com/services
  *
  *    @param photoid The photo id
  *    @param success A block

@@ -95,7 +95,7 @@
                         accuracy,
                         location.latitude,
                         location.longitude,
-                        [NSString stringWithFormat:@"%d", radius],
+                        [NSString stringWithFormat:@"%lu", (unsigned long)radius],
                         perpage
                         ];
     

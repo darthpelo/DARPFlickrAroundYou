@@ -10,7 +10,6 @@
 
 #import "DARPPhotosDownloadManager.h"
 
-#import "DARPPhoto.h"
 #import "Photo.h"
 
 #import "VEFlickrConnection.h"
@@ -60,6 +59,12 @@
 
 #pragma mark - Private methods
 
+/**
+ *  For each photos in the list, check if present in the database, otherwise make two calls to retrieve coordinate and image URL
+ *
+ *  @param list    A NSArray with photo base information (JSON)
+ *  @param success A NSArray with Photo istance
+ */
 - (void)collectPhotoInformation:(NSArray *)list success:(void(^)(NSArray *list))success
 {
     __block NSUInteger totalPhotos = list.count;
@@ -72,6 +77,9 @@
         
         NSManagedObjectContext *context = [self managedObjectContext];
         
+        /**
+         *  Check CoreData elements -> https://github.com/vascoorey/iOS-Projects/blob/master/Photomania/Photomania/Photo%2BFlickr.m
+         */
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
         request.predicate = [NSPredicate predicateWithFormat:@"photoid = %@", element[@"id"]];
@@ -80,7 +88,7 @@
         NSArray *matches = [context executeFetchRequest:request error:&error];
         
         if(!matches || [matches count] > 1) {
-            // Handle error
+            NSLog(@"%@", error.debugDescription);
         } else if(![matches count]) {
             photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
             
@@ -98,9 +106,9 @@
                                                                
                                                                // Add DARPPhoto to the final list
                                                                [blockPhotoList addObject:photo];
-                                                               
-                                                               NSLog(@"Photo %d from Flicrk server", totalPhotos);
-                                                               
+#ifdef DEBUG
+                                                               NSLog(@"Photo %lu from Flicrk server", (unsigned long)totalPhotos);
+#endif
                                                                totalPhotos--;
                                                                
                                                                if (totalPhotos == 0) {
@@ -139,9 +147,9 @@
             
             // Add DARPPhoto to the final list
             [blockPhotoList addObject:photo];
-            
-            NSLog(@"Photo %d from DB", totalPhotos);
-            
+#ifdef DEBUG
+            NSLog(@"Photo %lu from DB", (unsigned long)totalPhotos);
+#endif
             totalPhotos--;
             
             if (totalPhotos == 0) {
