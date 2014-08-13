@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Photo" representedClassName="Photo" syncable="YES">
-        <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="imageBig" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="imageBigURL" attributeType="String" syncable="YES"/>
+        <attribute name="imageThumb" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="photoid" attributeType="String" syncable="YES"/>
@@ -9,6 +11,6 @@
         <attribute name="title" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Photo" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Photo" positionX="-63" positionY="-18" width="128" height="163"/>
     </elements>
 </model>

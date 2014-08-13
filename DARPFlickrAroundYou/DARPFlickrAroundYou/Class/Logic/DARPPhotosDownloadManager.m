@@ -106,9 +106,7 @@
                                                                
                                                                // Add DARPPhoto to the final list
                                                                [blockPhotoList addObject:photo];
-#ifdef DEBUG
-                                                               NSLog(@"Photo %lu from Flicrk server", (unsigned long)totalPhotos);
-#endif
+
                                                                totalPhotos--;
                                                                
                                                                if (totalPhotos == 0) {
@@ -116,12 +114,13 @@
                                                                }
                                                                
                                                                // Request photo's thumb URL
-                                                               [[VEFlickrConnection flickrManager] getPhotoThumb:photo.photoid success:^(NSDictionary *responseData) {
+                                                               [[VEFlickrConnection flickrManager] getPhotoThumb:photo.photoid success:^(NSArray *responseData) {
                                                                    /**
                                                                     { "label": "Square", "width": 75, "height": 75, "source": "https:\/\/farm3.staticflickr.com\/2900\/14300335396_3e4e9ffbd8_s.jpg", "url": "https:\/\/www.flickr.com\/photos\/darthpelo02\/14300335396\/sizes\/sq\/", "media": "photo" }
                                                                     */
-                                                                   
-                                                                   photo.thumbURL = responseData[@"source"];
+                                                                   // First element of the list is the smaller size
+                                                                   photo.thumbURL = [responseData[0] objectForKey:@"source"];
+                                                                   photo.imageBigURL = [[responseData lastObject] objectForKey:@"source"];
                                                                    
                                                                    // Download image
                                                                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
@@ -131,7 +130,7 @@
                                                                                       
                                                                                       //This is your completion handler
                                                                                       dispatch_sync(dispatch_get_main_queue(), ^{
-                                                                                          photo.image = imageData;
+                                                                                          photo.imageThumb = imageData;
                                                                                           
                                                                                       });
                                                                                   });
@@ -147,9 +146,7 @@
             
             // Add DARPPhoto to the final list
             [blockPhotoList addObject:photo];
-#ifdef DEBUG
-            NSLog(@"Photo %lu from DB", (unsigned long)totalPhotos);
-#endif
+            
             totalPhotos--;
             
             if (totalPhotos == 0) {

@@ -136,7 +136,7 @@
     }];
 }
 
-- (void)getPhotoThumb:(NSString *)photoid success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure
+- (void)getPhotoThumb:(NSString *)photoid success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     NSString *urlStr = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=%@&photo_id=%@&format=json&nojsoncallback=1",
                         self.keys[kDARPFlickrApiKey],
@@ -147,8 +147,7 @@
     
     [manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *list = responseObject[@"sizes"][@"size"];
-        // Pass only the Square version of the photo
-        success([list objectAtIndex:0]);
+        success(list);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 #ifdef DEBUG

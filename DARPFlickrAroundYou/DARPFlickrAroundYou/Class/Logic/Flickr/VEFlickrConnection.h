@@ -43,7 +43,7 @@
  *    @param failure A block
  */
 - (void)getPhotoThumb:(NSString *)photoid
-              success:(void (^)(NSDictionary *responseData))success
+              success:(void (^)(NSArray *responseData))success
               failure:(void (^)(NSError *error))failure;
 
 @end

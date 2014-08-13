@@ -10,6 +10,7 @@
 
 #import "DARPViewController.h"
 #import "Photo+MKAnnotation.h"
+#import "DARPDetailViewController.h"
 
 #import "DARPPhotosDownloadManager.h"
 #import "MBProgressHUD.h"
@@ -40,7 +41,7 @@ static double const kDARPMinDistance = 50.0;
     // Dispose of any resources that can be recreated.
 }
 
-#pragma makr Private methods
+#pragma mark - Private methods
 
 - (void)updatePhotosList:(CLLocationCoordinate2D)newUserLocation
 {
@@ -95,6 +96,15 @@ static double const kDARPMinDistance = 50.0;
     return NO;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showPhoto"]) {
+        Photo *photo = self.mapView.selectedAnnotations.lastObject;
+        DARPDetailViewController *controller = (DARPDetailViewController *)[[segue destinationViewController] topViewController];
+        [controller setPhoto:photo];
+    }
+}
+#pragma mark MKAnnotations
 -(void)removeAllAnnotationExceptOfCurrentUser
 {
     NSMutableArray *annForRemove = [[NSMutableArray alloc] initWithArray:self.mapView.annotations];
@@ -117,6 +127,11 @@ static double const kDARPMinDistance = 50.0;
 {
 //    [self removeAllAnnotationExceptOfCurrentUser];
     [self.mapView addAnnotations:list];
+}
+
+- (void)selectAnnotation:(id)sender
+{
+    [self performSegueWithIdentifier:@"showPhoto" sender:self];
 }
 
 #pragma mark - MKMapView delegate
@@ -186,10 +201,11 @@ static double const kDARPMinDistance = 50.0;
         view.canShowCallout = YES;
         view.image = [UIImage imageNamed:@"pin"];
         view.calloutOffset = CGPointMake(0, 0);
-        if([mapView.delegate respondsToSelector:@selector(mapView:annotationView:calloutAccessoryControlTapped:)]) {
-            view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        }
         view.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        [button addTarget:self
+                   action:@selector(selectAnnotation:) forControlEvents:UIControlEventTouchUpInside];
+        view.rightCalloutAccessoryView = button;
     }
     
     if([view.leftCalloutAccessoryView isKindOfClass:[UIImageView class]]) {

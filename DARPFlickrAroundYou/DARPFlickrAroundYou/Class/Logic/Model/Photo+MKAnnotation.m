@@ -21,12 +21,12 @@
 - (UIImage *)thumbnail
 {
     // Check if image is ready
-    if (self.image == nil) {
+    if (self.imageThumb == nil) {
         [self checkThumbnail:^(NSData *imageData) {
-            self.image = imageData;
+            self.imageThumb = imageData;
         }];
     }
-    return [UIImage imageWithData:self.image];
+    return [UIImage imageWithData:self.imageThumb];
 }
 
 #pragma mark - Private methods

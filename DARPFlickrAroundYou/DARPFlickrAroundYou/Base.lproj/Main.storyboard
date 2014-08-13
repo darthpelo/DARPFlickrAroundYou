@@ -34,10 +34,69 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="l53-hR-Ozs" id="1Jo-5w-8vu"/>
+                        <segue destination="Tqf-7k-17x" kind="modal" identifier="showPhoto" id="LiJ-Sq-YCw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Ht3-N7-tGS">
+            <objects>
+                <viewController id="wta-aA-TED" customClass="DARPDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xL5-g6-TzV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yoa-Hk-XcB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bcF-JZ-dRu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="odo-RJ-BKJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="odo-RJ-BKJ" firstAttribute="leading" secondItem="bcF-JZ-dRu" secondAttribute="leading" id="2s3-d0-BKw"/>
+                            <constraint firstAttribute="trailing" secondItem="odo-RJ-BKJ" secondAttribute="trailing" id="K84-y2-Qgl"/>
+                            <constraint firstAttribute="bottom" secondItem="odo-RJ-BKJ" secondAttribute="bottom" id="TYA-vK-vJT"/>
+                            <constraint firstItem="odo-RJ-BKJ" firstAttribute="top" secondItem="bcF-JZ-dRu" secondAttribute="top" id="kCd-gF-g5a"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iv8-pb-jHB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="fBX-Av-7A3">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="wta-aA-TED" id="64M-kr-lSf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bigImage" destination="odo-RJ-BKJ" id="KTL-Ot-cit"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B73-MT-bt7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1559" y="161"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WPC-UU-czB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tqf-7k-17x" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ECi-od-Q1S">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wta-aA-TED" kind="relationship" relationship="rootViewController" id="6SC-2I-NLR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YfS-Cl-iI1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="161"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
