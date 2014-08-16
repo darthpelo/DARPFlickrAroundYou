@@ -57,8 +57,8 @@
                        
                        //This is your completion handler
                        dispatch_sync(dispatch_get_main_queue(), ^{
-                           self.photo.imageBig = imageData;
                            self.bigImage.image = [UIImage imageWithData:imageData];
+                           
                            [MBProgressHUD hideHUDForView:self.view animated:YES];
                        });
                    });
