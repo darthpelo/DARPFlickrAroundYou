@@ -7,6 +7,7 @@
 //
 
 @import MapKit;
+@import CoreLocation;
 
 #import "DARPViewController.h"
 #import "Photo+MKAnnotation.h"
@@ -17,13 +18,14 @@
 
 static double const kDARPMinDistance = 50.0;
 
-@interface DARPViewController () <MKMapViewDelegate>
+@interface DARPViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, assign) BOOL nextRegionChangeIsFromUserInteraction;
 @property (nonatomic, assign) BOOL requestInProgress;
 @property (nonatomic, assign) CLLocationCoordinate2D lastUserLocation;
 @property (nonatomic, strong) NSArray *photosList;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) CLLocationManager *locationManger;
 
 @end
 
@@ -33,6 +35,9 @@ static double const kDARPMinDistance = 50.0;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    _locationManger = [[CLLocationManager alloc] init];
+    self.locationManger.delegate = self;
+    [self.locationManger requestAlwaysAuthorization];
 }
 
 - (void)didReceiveMemoryWarning
@@ -132,6 +137,16 @@ static double const kDARPMinDistance = 50.0;
 - (void)selectAnnotation:(id)sender
 {
     [self performSegueWithIdentifier:@"showPhoto" sender:self];
+}
+
+#pragma mark - CLLocation delegate
+
+- (void)locationManager:(CLLocationManager *)manager
+didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if (status > 2) {
+        [self.locationManger startUpdatingLocation];
+    }
 }
 
 #pragma mark - MKMapView delegate
