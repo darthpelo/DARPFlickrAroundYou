@@ -109,6 +109,7 @@ static double const kDARPMinDistance = 50.0;
         [controller setPhoto:photo];
     }
 }
+
 #pragma mark MKAnnotations
 -(void)removeAllAnnotationExceptOfCurrentUser
 {
