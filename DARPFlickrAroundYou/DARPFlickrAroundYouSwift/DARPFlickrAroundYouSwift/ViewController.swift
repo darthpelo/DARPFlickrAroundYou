@@ -23,6 +23,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
+        
+        DARPPhotosDownloadManager()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,26 +34,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     // MARK: - Private methods
     
-    /*
-    - (BOOL)checkDistance:(CLLocationCoordinate2D)newUserLocation
-    {
-    CLLocation *currentLoc = [[CLLocation alloc] initWithLatitude:newUserLocation.latitude longitude:newUserLocation.longitude];
-    CLLocation *lastLoc = [[CLLocation alloc] initWithLatitude:self.lastUserLocation.latitude longitude:self.lastUserLocation.longitude];
-    CLLocationDistance distance = [lastLoc distanceFromLocation:currentLoc];
-    
-    if (distance > kDARPMinDistance && self.requestInProgress == NO) {
-    return YES;
-    }
-    
-    return NO;
-    }
-
-    */
-    
     func checkDistance(userLocation: CLLocationCoordinate2D) -> (Bool) {
         
         let lat = lastUserLocation?.latitude
         let lon = lastUserLocation?.longitude
+        
+        if (lat == nil) || (lon == nil) {
+            return true
+        }
         
         let currentLoc = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
         let lastLoc = CLLocation(latitude: lat!, longitude: lon!)
@@ -61,13 +51,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         return false
     }
+    
+    func updatePhotos(coordinate: CLLocationCoordinate2D) {
+        let list = DARPPhotosDownloadManager.downloadPhotos(coordinate, radius: 5)
+        
+        if list.1 != nil {
+            println("Request Error")
+        } else {
+            println("\(list.photos)")
+        }
+    }
 
     // MARK: - MKMapView delegate
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         var location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        lastUserLocation = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         
         if checkDistance(location) == true {
+            lastUserLocation = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+            
+            updatePhotos(lastUserLocation!)
             
             var region: MKCoordinateRegion
             

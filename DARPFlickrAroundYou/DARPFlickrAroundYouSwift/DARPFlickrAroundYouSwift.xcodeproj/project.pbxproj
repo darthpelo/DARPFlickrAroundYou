@@ -15,6 +15,7 @@
 		BE2057FC19AA7CB50064A53C /* DARPFlickrAroundYouSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2057FB19AA7CB50064A53C /* DARPFlickrAroundYouSwiftTests.swift */; };
 		BE20580619AA7DDE0064A53C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE20580519AA7DDE0064A53C /* MapKit.framework */; };
 		BE20580819AA7DED0064A53C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE20580719AA7DED0064A53C /* CoreLocation.framework */; };
+		BEDB28AA19AB68FB0080313B /* DARPPhotosDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB28A919AB68FB0080313B /* DARPPhotosDownloadManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		BE2057FB19AA7CB50064A53C /* DARPFlickrAroundYouSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DARPFlickrAroundYouSwiftTests.swift; sourceTree = "<group>"; };
 		BE20580519AA7DDE0064A53C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BE20580719AA7DED0064A53C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BEDB28A919AB68FB0080313B /* DARPPhotosDownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DARPPhotosDownloadManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		BE2057E219AA7CB40064A53C /* DARPFlickrAroundYouSwift */ = {
 			isa = PBXGroup;
 			children = (
+				BEDB28A719AB68980080313B /* Logic */,
 				BE2057E519AA7CB40064A53C /* AppDelegate.swift */,
 				BE2057EA19AA7CB50064A53C /* ViewController.swift */,
 				BE2057EC19AA7CB50064A53C /* Main.storyboard */,
@@ -118,6 +121,22 @@
 				BE2057FA19AA7CB50064A53C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BEDB28A719AB68980080313B /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB28A819AB68B50080313B /* Download Manager */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
+		BEDB28A819AB68B50080313B /* Download Manager */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB28A919AB68FB0080313B /* DARPPhotosDownloadManager.swift */,
+			);
+			name = "Download Manager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE2057EB19AA7CB50064A53C /* ViewController.swift in Sources */,
+				BEDB28AA19AB68FB0080313B /* DARPPhotosDownloadManager.swift in Sources */,
 				BE2057E919AA7CB40064A53C /* DARPFlickrAroundYouSwift.xcdatamodeld in Sources */,
 				BE2057E619AA7CB40064A53C /* AppDelegate.swift in Sources */,
 			);
@@ -412,6 +432,7 @@
 				BE20580119AA7CB50064A53C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE20580219AA7CB50064A53C /* Build configuration list for PBXNativeTarget "DARPFlickrAroundYouSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +441,7 @@
 				BE20580419AA7CB50064A53C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
