@@ -16,6 +16,7 @@
 		BE20580619AA7DDE0064A53C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE20580519AA7DDE0064A53C /* MapKit.framework */; };
 		BE20580819AA7DED0064A53C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE20580719AA7DED0064A53C /* CoreLocation.framework */; };
 		BEDB28AA19AB68FB0080313B /* DARPPhotosDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB28A919AB68FB0080313B /* DARPPhotosDownloadManager.swift */; };
+		BEDB28AD19ABE0450080313B /* DARPFlickrConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB28AC19ABE0450080313B /* DARPFlickrConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +26,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = BE2057DF19AA7CB40064A53C;
 			remoteInfo = DARPFlickrAroundYouSwift;
+		};
+		BEDB28B419AC76860080313B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEDB28AF19AC76860080313B /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = Alamofire;
+		};
+		BEDB28B619AC76860080313B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEDB28AF19AC76860080313B /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = AlamofireTests;
+		};
+		BEDB28B819AC76C80080313B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEDB28AF19AC76860080313B /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = Alamofire;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -42,6 +64,8 @@
 		BE20580519AA7DDE0064A53C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BE20580719AA7DED0064A53C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BEDB28A919AB68FB0080313B /* DARPPhotosDownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DARPPhotosDownloadManager.swift; sourceTree = "<group>"; };
+		BEDB28AC19ABE0450080313B /* DARPFlickrConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DARPFlickrConnection.swift; sourceTree = "<group>"; };
+		BEDB28AF19AC76860080313B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +91,7 @@
 		BE2057D719AA7CB40064A53C = {
 			isa = PBXGroup;
 			children = (
+				BEDB28AF19AC76860080313B /* Alamofire.xcodeproj */,
 				BE20580719AA7DED0064A53C /* CoreLocation.framework */,
 				BE20580519AA7DDE0064A53C /* MapKit.framework */,
 				BE2057E219AA7CB40064A53C /* DARPFlickrAroundYouSwift */,
@@ -126,6 +151,7 @@
 		BEDB28A719AB68980080313B /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				BEDB28AB19ABDF990080313B /* Flickr */,
 				BEDB28A819AB68B50080313B /* Download Manager */,
 			);
 			name = Logic;
@@ -137,6 +163,23 @@
 				BEDB28A919AB68FB0080313B /* DARPPhotosDownloadManager.swift */,
 			);
 			name = "Download Manager";
+			sourceTree = "<group>";
+		};
+		BEDB28AB19ABDF990080313B /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB28AC19ABE0450080313B /* DARPFlickrConnection.swift */,
+			);
+			name = Flickr;
+			sourceTree = "<group>";
+		};
+		BEDB28B019AC76860080313B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB28B519AC76860080313B /* Alamofire.framework */,
+				BEDB28B719AC76860080313B /* AlamofireTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +196,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				BEDB28B919AC76C80080313B /* PBXTargetDependency */,
 			);
 			name = DARPFlickrAroundYouSwift;
 			productName = DARPFlickrAroundYouSwift;
@@ -211,6 +255,12 @@
 			mainGroup = BE2057D719AA7CB40064A53C;
 			productRefGroup = BE2057E119AA7CB40064A53C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BEDB28B019AC76860080313B /* Products */;
+					ProjectRef = BEDB28AF19AC76860080313B /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BE2057DF19AA7CB40064A53C /* DARPFlickrAroundYouSwift */,
@@ -218,6 +268,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BEDB28B519AC76860080313B /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = BEDB28B419AC76860080313B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BEDB28B719AC76860080313B /* AlamofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AlamofireTests.xctest;
+			remoteRef = BEDB28B619AC76860080313B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BE2057DE19AA7CB40064A53C /* Resources */ = {
@@ -243,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEDB28AD19ABE0450080313B /* DARPFlickrConnection.swift in Sources */,
 				BE2057EB19AA7CB50064A53C /* ViewController.swift in Sources */,
 				BEDB28AA19AB68FB0080313B /* DARPPhotosDownloadManager.swift in Sources */,
 				BE2057E919AA7CB40064A53C /* DARPFlickrAroundYouSwift.xcdatamodeld in Sources */,
@@ -265,6 +333,11 @@
 			isa = PBXTargetDependency;
 			target = BE2057DF19AA7CB40064A53C /* DARPFlickrAroundYouSwift */;
 			targetProxy = BE2057F619AA7CB50064A53C /* PBXContainerItemProxy */;
+		};
+		BEDB28B919AC76C80080313B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			targetProxy = BEDB28B819AC76C80080313B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

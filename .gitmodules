@@ -1,0 +1,3 @@
+[submodule "DARPFlickrAroundYou/DARPFlickrAroundYouSwift/Alamofire"]
+	path = DARPFlickrAroundYou/DARPFlickrAroundYouSwift/Alamofire
+	url = https://github.com/Alamofire/Alamofire.git
