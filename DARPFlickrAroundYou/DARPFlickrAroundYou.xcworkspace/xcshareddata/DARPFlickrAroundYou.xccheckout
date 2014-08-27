@@ -10,29 +10,41 @@
 	<string>DARPFlickrAroundYou</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3AB000DA-0609-4D4A-8BAE-C17FBB608BF4</key>
+		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
+		<string>https://github.com/Alamofire/Alamofire.git</string>
+		<key>8132216F2E8F46105AD262526405A0B3EE389BB0</key>
 		<string>https://github.com/darthpelo/DARPFlickrAroundYou.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>DARPFlickrAroundYou/DARPFlickrAroundYou.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3AB000DA-0609-4D4A-8BAE-C17FBB608BF4</key>
+		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
+		<string>../../DARPFlickrAroundYou/DARPFlickrAroundYouSwift/Alamofire/</string>
+		<key>8132216F2E8F46105AD262526405A0B3EE389BB0</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/darthpelo/DARPFlickrAroundYou.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3AB000DA-0609-4D4A-8BAE-C17FBB608BF4</string>
+	<string>8132216F2E8F46105AD262526405A0B3EE389BB0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3AB000DA-0609-4D4A-8BAE-C17FBB608BF4</string>
+			<string>67620B5EFA902936DF04070AF595B76AB0333747</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Alamofire</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8132216F2E8F46105AD262526405A0B3EE389BB0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>DARPFlickrAroundYou</string>
 		</dict>
