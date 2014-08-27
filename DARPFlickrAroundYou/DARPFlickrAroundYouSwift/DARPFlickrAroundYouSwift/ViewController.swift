@@ -54,7 +54,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func updatePhotos(coordinate: CLLocationCoordinate2D) {
-        let result = DARPPhotosDownloadManager.downloadPhotos(coordinate, radius: 5)
+        let result = DownloadManager.downloadPhotos(coordinate, radius: 5)
         
         result.responseJSON { (request, response, JSON, error) -> Void in
             if error != nil {
