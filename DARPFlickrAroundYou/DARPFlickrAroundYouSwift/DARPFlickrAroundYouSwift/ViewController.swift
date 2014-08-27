@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Alamofire
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                             
@@ -53,12 +54,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func updatePhotos(coordinate: CLLocationCoordinate2D) {
-        let list = DARPPhotosDownloadManager.downloadPhotos(coordinate, radius: 5)
+        let result = DARPPhotosDownloadManager.downloadPhotos(coordinate, radius: 5)
         
-        if list.1 != nil {
-            println("Request Error")
-        } else {
-            println("\(list.photos)")
+        result.responseJSON { (request, response, JSON, error) -> Void in
+            if error != nil {
+                println("\(error?.debugDescription)")
+            } else {
+                println(JSON)
+            }
         }
     }
 

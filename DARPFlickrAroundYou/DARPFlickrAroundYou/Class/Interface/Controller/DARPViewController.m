@@ -55,28 +55,12 @@ static double const kDARPMinDistance = 50.0;
     self.requestInProgress = YES;
     
     NSUInteger radius = 2;
-    /*
-    NSLog(@"%f", self.mapView.region.span.latitudeDelta);
-    
-    if (self.mapView.region.span.latitudeDelta > 0.002 && self.mapView.region.span.latitudeDelta < 0.003) {
-        radius = 2;
-    } else if (self.mapView.region.span.latitudeDelta > 0.003 && self.mapView.region.span.latitudeDelta < 0.004) {
-        radius = 3;
-    } else if (self.mapView.region.span.latitudeDelta > 0.004 && self.mapView.region.span.latitudeDelta < 0.005) {
-        radius = 4;
-    } else if (self.mapView.region.span.latitudeDelta > 0.005 && self.mapView.region.span.latitudeDelta < 0.007) {
-        radius = 5;
-    } else if (self.mapView.region.span.latitudeDelta > 0.007) {
-        radius = 6;
-    }
-     */
-    __weak __typeof(self)weakSelf = self;
+        
     [[DARPPhotosDownloadManager sharedManager] downloadPhotoAroundCoordinate:newUserLocation radius:radius success:^(NSArray *list) {
-        __strong __typeof(weakSelf)strongSelf = weakSelf;
         
-        [strongSelf proccessAnnotations:list];
+        [self proccessAnnotations:list];
         
-        [MBProgressHUD hideAllHUDsForView:strongSelf.view animated:YES];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
         self.requestInProgress = NO;
         
