@@ -37,7 +37,12 @@ static double const kDARPMinDistance = 50.0;
 	// Do any additional setup after loading the view, typically from a nib.
     _locationManger = [[CLLocationManager alloc] init];
     self.locationManger.delegate = self;
-    [self.locationManger requestAlwaysAuthorization];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+    if ([self.locationManger respondsToSelector:@selector(requestAlwaysAuthorization)])
+    {
+        [self.locationManger requestAlwaysAuthorization];
+    }
+#endif
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,7 +134,7 @@ static double const kDARPMinDistance = 50.0;
 - (void)locationManager:(CLLocationManager *)manager
 didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
-    if (status > 2) {
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorized || status == kCLAuthorizationStatusNotDetermined) {
         [self.locationManger startUpdatingLocation];
     }
 }
